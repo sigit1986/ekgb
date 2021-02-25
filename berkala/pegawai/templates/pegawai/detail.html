@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="table-responsive">
+    <div class="card-header">
+    <strong class="card-title">Table Head</strong>
+    </div>
+    <div class="card-body">
+    <table class="table">
+    <thead class="thead-dark">
+    <tr>
+    <th scope="col">Nomor</th>
+    <th scope="col">NIP</th>
+    <th scope="col">Nama</th>
+    <th scope="col">Jabatan</th>
+    <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>  
+        {% for i in pegawai%}
+    <tr>
+        <td>{{ forloop.counter }}</td>  
+        <td>{{i.nip}}</td>
+        <td>{{i.nama}}</td>
+        <td>{{i.opd}}</td>
+    </tr>
+    {%endfor%}
+    </tbody>
+    </table>
+    </div>
+    </div>
+    
+{% endblock %}  
