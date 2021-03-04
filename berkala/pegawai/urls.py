@@ -8,5 +8,6 @@ urlpatterns = [
     # path('welcome', views.IndexView, name='welcome'),
     #path('detail', views.IndexView, name='detail'),
     path('uploaduser', views.UploadView, name='uploaduser'),
+    path('uploadpegawai', views.UploadView, name='uploadpegawai'),
     path('detail', views.DetailView, name = 'detail')
 ]

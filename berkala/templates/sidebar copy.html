@@ -8,21 +8,6 @@
                  <i class="icon icon-speedometer"></i> Dashboard
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="<?php echo site_url('riwayat-kgb" class="nav-link">
-                    <i class="icon icon-info"></i> Riwayat KGB
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="<?php echo site_url('riwayat-proses" class="nav-link">
-                    <i class="icon icon-graph"></i> Riwayat Proses KGB
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="<?php echo site_url('riwayat-proses/pegawai/' .$this->session->userdata('nip')); ?>" class="nav-link">
-                    <i class="icon icon-graph"></i> Riwayat Proses KGB
-                </a>
-            </li>
             {% endif %}
             {%if user.is_authenticated and user.is_staff %}
             <li class="nav-item">
@@ -55,8 +40,18 @@
             {% endif %}
             {%if user.is_authenticated and user.is_superuser %}
             <li class="nav-item">
-                <a href="<?php echo site_url('laporan" class="nav-link">
-                    <i class="icon icon-book-open"></i> Laporan
+                <a href="<?php echo site_url('riwayat-kgb" class="nav-link">
+                    <i class="icon icon-info"></i> Riwayat KGB
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="<?php echo site_url('riwayat-proses" class="nav-link">
+                    <i class="icon icon-graph"></i> Riwayat Proses KGB
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="<?php echo site_url('riwayat-proses/pegawai/' .$this->session->userdata('nip')); ?>" class="nav-link">
+                    <i class="icon icon-graph"></i> Riwayat Proses KGB
                 </a>
             </li>
             <li class="nav-item nav-dropdown">
@@ -73,6 +68,11 @@
                         </a>
                     </li>
                 </ul>
+            </li>
+            <li class="nav-item">
+                <a href="<?php echo site_url('laporan" class="nav-link">
+                    <i class="icon icon-book-open"></i> Laporan
+                </a>
             </li>
         </ul>
     </nav>

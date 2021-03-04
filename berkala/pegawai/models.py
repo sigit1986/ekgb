@@ -4,14 +4,14 @@ from django.contrib.auth.models import User
 # Create your models here.
 class PegawaiModel(models.Model):
     nama = models.CharField(max_length=100)
-    jabatan = models.IntegerField(null=True)
+    jabatan = models.BigIntegerField(null=True)
     nip = models.CharField(max_length=100, null=True)
-    opd = models.ForeignKey('OpdModel', models.DO_NOTHING, default=1)
-    pangkat = models.IntegerField(null=True)
-    pengguna = models.ForeignKey(User,models.DO_NOTHING, default=0000000)
+    opd = models.BigIntegerField(blank=True, null=True)
+    pangkat = models.BigIntegerField(null=True)
+    pengguna = models.BigIntegerField(blank=True, null=True)
     alamat  = models.CharField(max_length=255)
-    telpon  = models.CharField(max_length=15)
-    gaji_skrg = models.ForeignKey('GajiModel', models.DO_NOTHING, blank=True, null=True )
+    telpon  = models.CharField(max_length=30)
+    gaji_skrg = models.BigIntegerField(blank=True, null=True)
 
     def __str__(self):
         return self.nama
@@ -66,3 +66,16 @@ class BerkalaHistoryModel(models.Model):
     
     def __str__(self):
         return self.golongan
+
+class AkunModel(models.Model):
+    JENIS_AKUN_CHOICES = (
+        ('pegawai','Pegawai'),
+        ('operator', 'Operator'),
+        ('admin', 'Administrator'),
+    )
+    akun = models.BigIntegerField(blank=True, null=True)
+    pegawai = models.BigIntegerField(blank=True, null=True)
+    jenis_akun = models.CharField(max_length=20, choices=JENIS_AKUN_CHOICES)
+
+    def __unicode__(self):
+        return self.akun

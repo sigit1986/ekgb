@@ -16,12 +16,12 @@
     </tr>
     </thead>
     <tbody>  
-        {% for i in pegawai%}
+        {% for i in json_str%}
     <tr>
         <td>{{ forloop.counter }}</td>  
         <td>{{i.nip}}</td>
-        <td>{{i.nama}}</td>
-        <td>{{i.opd}}</td>
+        <td>{{i.name}}</td>
+        <td>{{i.jabatan_data}}</td>
     </tr>
     {%endfor%}
     </tbody>
