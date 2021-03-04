@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .forms import UserLoginForm
 from django.contrib.auth import (
     authenticate,
@@ -42,7 +42,6 @@ def LogoutView(request):
 
 
 def IndexView(request):
-    alamat = 'http://202.179.184.151/'
     username = str(request.session.get('username'))
     pegawai = {
         'title': "Data Pegawai",
@@ -57,8 +56,6 @@ def UploadView(request):
     # deklarasi Template
     template = "pegawai/uploaduser.html"
     data = User.objects.all()
-    pegawai = PegawaiModel.objects.all()
-    akun = AkunModel.objects.all()
     # prompt is a context variable that can have different values      depending on their context
     prompt = {
         'order': 'Table Head berupa username, email, password',
@@ -179,8 +176,28 @@ def DetailView(request):
     username = str(request.session.get('username'))
     pegawai = User.objects.get(username=username)
     print(pegawai)
-    datautama =  urllib.request.urlopen(alamat +'nip/?company='+'937')
+    datautama =  urllib.request.urlopen(alamat +'nip/?company='+'914')
     json_str = json.load(datautama)
     print(json_str)
+    for data in json_str:
+        PegawaiModel.objects.get_or_create(
+            id=data['id'],
+            nama=data['name'],
+            #jabatan=data['jabatan_data'],
+            nip=data['nip'],
+            opd=data['company_id'],
+            pangkat=data['golongan_id'],
+            pengguna=data['user_id']
+            )
+        AkunModel.objects.get_or_create(
+            akun =data['user_id'],
+            pegawai = data['id'],
+            jenis_akun = 'pegawai'
+        ) 
     return render(request, 'pegawai/detail.html',context={'json_str':json_str})
+
+def PerOpdView(request):
+    opd = OpdModel.objects.all()
+
+    return render(request, 'pegawai/uploadperopd.html',context={'opd':opd}) 
 
