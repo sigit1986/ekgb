@@ -1,32 +1,60 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="table-responsive">
-    <div class="card-header">
-    <strong class="card-title">Table Head</strong>
-    </div>
-    <div class="card-body">
-    <table class="table">
-    <thead class="thead-dark">
-    <tr>
-    <th scope="col">Nomor</th>
-    <th scope="col">NIP</th>
-    <th scope="col">Nama</th>
-    <th scope="col">Jabatan</th>
-    <th scope="col">Action</th>
-    </tr>
-    </thead>
-    <tbody>  
-        {% for i in json_str%}
-    <tr>
-        <td>{{ forloop.counter }}</td>  
-        <td>{{i.nip}}</td>
-        <td>{{i.name}}</td>
-        <td>{{i.jabatan_data}}</td>
-    </tr>
-    {%endfor%}
-    </tbody>
-    </table>
-    </div>
-    </div>
-    
+{% for i in json_str %}
+<div class="col-md-4">
+	    <div>
+	        <img src="<?php echo base_url();?>foto/?>" class="img-thumbnail" width="225px" height="235px">
+			<input name="foto" type="file">
+	    </div>
+	    <br>
+	    <div class="form-group">
+	        <label class="text-primary">NIP BARU</label>
+	        <input class="form-control" name="nip_baru" type="text" value="{{ i.nip }}">
+	    </div>
+	    <div class="form-group">
+	        <label class="text-primary">NAMA</label>
+	        <input class ="form-control" name="nama_lengkap" type="text" value="{{ i.name }}">
+
+	    </div>
+	    <div class="form-group">
+	        <label class="text-primary">TEMPAT LAHIR</label>
+	        <input class ="form-control" name="tempat_lahir" type="text" value="{{ i.tempat_lahir }}">
+	    </div>
+	    <div class="form-group">
+	        <label class="text-primary">UNIT KERJA</label>
+
+	    </div>
+	</div>
+	<div class="col-md-4">
+	    <div class="form-group">
+	        <label class="text-primary">JENIS KELAMIN</label>
+            <input class ="form-control" name="unit_kerja" type="text" value="{{ i.jenis_kelamin }}">
+	    <div class="form-group">
+	        <label class="text-primary">PENDIDIKAN TERAKHIR</label>
+            <input class ="form-control" name="unit_kerja" type="text" value="{{ i.Level_Pendidikan }}">
+	    </div>
+	    <div class="form-group">
+	        <label class="text-primary">TMT PNS</label>
+	        <input class ="form-control" name="tmt_pns" type="text" value="{{ i.tmt_pns }}">
+	    </div>
+	    <div class="form-group">
+	        <label class="text-primary">JABATAN TERAKHIR</label>
+            <input class ="form-control" name="jabatan_data" type="text" value="{{ i.jabatan_data }}">
+	    </div>
+	    <div class="form-group">
+            <label class="text-primary">JENIS JABATAN</label>
+            <input class ="form-control" name="jenis_jabatan" type="text" value="{{ i.jenis_jabatan }}">
+        </div>
+	</div>
+	<div class="col-md-4">
+        <div class="form-group">
+            <label class="text-primary">GOLONGAN TERAKHIR</label>
+            <input class ="form-control" name="golongan_id" type="text" value="{{ i.golongan_id }}">
+        </div>
+	    <div class="form-group">
+	        <input class="btn btn-primary" type="submit" value="Simpan">
+	        <a type="submit" class="btn btn-primary" href="<?php echo base_url()?>index.php/DatapegOPD" ><i class="icon-ok-circle"></i>   Kembali  </a>
+	    </div>
+	 </div>
+{% endfor %}
 {% endblock %}  
