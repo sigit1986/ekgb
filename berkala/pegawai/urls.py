@@ -10,5 +10,7 @@ urlpatterns = [
     path('uploaduser', views.UploadView, name='uploaduser'),
     path('uploadpegawai', views.UploadView, name='uploadpegawai'),
     path('detail', views.DetailView, name = 'detail'),
-    path('peropd', views.PerOpdView, name = 'uploadperopd')
+    path('peropd', views.PerOpdView, name = 'uploadperopd'),
+    path('riwawatkgb', views.RiwayatKgbView, name='riwayatkgb'),
+    path('riwayatpangkat', views.RiwayatPangkatView, name='riwayatpangkat')
 ]
