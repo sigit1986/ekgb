@@ -1,60 +1,70 @@
 {% extends 'base.html' %}
 {% block content %}
 {% for i in json_str %}
-<div class="col-md-4">
-	    <div>
-	        <img src="<?php echo base_url();?>foto/?>" class="img-thumbnail" width="225px" height="235px">
-			<input name="foto" type="file">
-	    </div>
-	    <br>
-	    <div class="form-group">
-	        <label class="text-primary">NIP BARU</label>
-	        <input class="form-control" name="nip_baru" type="text" value="{{ i.nip }}">
-	    </div>
-	    <div class="form-group">
-	        <label class="text-primary">NAMA</label>
-	        <input class ="form-control" name="nama_lengkap" type="text" value="{{ i.name }}">
 
-	    </div>
-	    <div class="form-group">
-	        <label class="text-primary">TEMPAT LAHIR</label>
-	        <input class ="form-control" name="tempat_lahir" type="text" value="{{ i.tempat_lahir }}">
-	    </div>
-	    <div class="form-group">
-	        <label class="text-primary">UNIT KERJA</label>
-
-	    </div>
-	</div>
-	<div class="col-md-4">
-	    <div class="form-group">
-	        <label class="text-primary">JENIS KELAMIN</label>
-            <input class ="form-control" name="unit_kerja" type="text" value="{{ i.jenis_kelamin }}">
-	    <div class="form-group">
-	        <label class="text-primary">PENDIDIKAN TERAKHIR</label>
-            <input class ="form-control" name="unit_kerja" type="text" value="{{ i.Level_Pendidikan }}">
-	    </div>
-	    <div class="form-group">
-	        <label class="text-primary">TMT PNS</label>
-	        <input class ="form-control" name="tmt_pns" type="text" value="{{ i.tmt_pns }}">
-	    </div>
-	    <div class="form-group">
-	        <label class="text-primary">JABATAN TERAKHIR</label>
-            <input class ="form-control" name="jabatan_data" type="text" value="{{ i.jabatan_data }}">
-	    </div>
-	    <div class="form-group">
-            <label class="text-primary">JENIS JABATAN</label>
-            <input class ="form-control" name="jenis_jabatan" type="text" value="{{ i.jenis_jabatan }}">
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header bg-light">
+            Nominatif Manual
         </div>
-	</div>
-	<div class="col-md-4">
-        <div class="form-group">
-            <label class="text-primary">GOLONGAN TERAKHIR</label>
-            <input class ="form-control" name="golongan_id" type="text" value="{{ i.golongan_id }}">
+        <div class="card-body">
+            <form class="row" id="tambah-nominatif-form" method="post" action="">
+				<div class="col-md-2">
+					<img src="<?php echo base_url();?>foto/?>" class="img-thumbnail" width="155px" height="150px">
+                    <br>
+                    <div class="form-group">
+                        <label class="form-control-label">NIP</label>
+						<input id="jnsjab" name="nip" class="form-control" value="{{ i.nip }}" readonly />
+                    </div>
+				</div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="namaasn" class="form-control-label">Nama :</label>
+                        <input id="namaasn" name="nama" class="form-control" value="{{ i.name }}" readonly />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label">Jenis Jabatan</label>
+						<input id="nip" name="nip" class="form-control" value="{{ i.jenis_jabatan }}" readonly />
+                    </div>
+                    <div class="form-group">
+                        <label for="jabterakhir" class="form-control-label">Jabatan Terakhir :</label>
+                        <input id="jabterakhir" name="nama" class="form-control" value="{{ i.jabatan_data }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="golterakhir" class="form-control-label">Pangkat/Golong Terakhir :</label>
+                        <input id="golterakhir" name="pangol" class="form-control" value="{{ i.golongan_terakhir }}" readonly />
+                    </div>
+                    <div class="form-group">
+                        <label for="skpdasn" class="form-control-label">SKPD :</label>
+                        <input id="skpdasn" name="skpd" class="form-control" value="{{ i.opd }}" readonly />
+                    </div>
+                     <div class="form-group">
+                        <label for="pendidikanterakhir" class="form-control-label">Pendidikan Terakhir :</label>
+                        <input id="pendidikanterakhir" name="skpd" class="form-control" value="{{ i.Level_Pendidikan }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="tmptlahir" class="form-control-label">Tempat Lahir :</label>
+                        <input id="tmptlahir" name="pangol" class="form-control" value="{{ i.tempat_lahir }}" readonly />
+                    </div>
+                    <div class="form-group">
+                        <label for="jnsklmn" class="form-control-label">Jenis Kelamin :</label>
+                        <input id="jnsklmn" name="skpd" class="form-control" value="{{ i.jenis_kelamin }}" readonly />
+                    </div>
+                    <div class="form-group">
+                        <label for="tmtpns" class="form-control-label">TMT PNS :</label>
+                        <input id="tmtpns" name="skpd" class="form-control" value="{{ i.tmt_pns }}" readonly />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <hr>
+                </div>
+            </form>
         </div>
-	    <div class="form-group">
-	        <input class="btn btn-primary" type="submit" value="Simpan">
-	        <a type="submit" class="btn btn-primary" href="<?php echo base_url()?>index.php/DatapegOPD" ><i class="icon-ok-circle"></i>   Kembali  </a>
-	    </div>
-	 </div>
+    </div>
+</div>
 {% endfor %}
-{% endblock %}  
+{% endblock %}
