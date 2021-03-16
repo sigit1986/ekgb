@@ -18,7 +18,7 @@ alamat = 'http://202.179.184.151/'
 def LoginView(request):
     form = UserLoginForm(request.POST or None)
     template_name = 'pegawai/detail.html'
-    data = {
+    data2 = {
             'form': form,
             'judul': 'Dashboard',
         }
@@ -30,7 +30,25 @@ def LoginView(request):
         user = authenticate(username=username, password=password)
         request.session['username'] = username
         login(request, user)
-        return render(request, template_name, context= {'data':data, 'user':user})
+        datautama = urllib.request.urlopen(alamat + 'nip/?search=' + str(username))
+        json_str = json.load(datautama)
+        print(json_str)
+        for data in json_str:
+            PegawaiModel.objects.get_or_create(
+                id=data['id'],
+                nama=data['name'],
+                # jabatan=data['jabatan_data'],
+                nip=data['nip'],
+                opd=data['company_id'],
+                pangkat=data['golongan_id'],
+                pengguna=data['user_id']
+            )
+            AkunModel.objects.get_or_create(
+                akun=data['user_id'],
+                pegawai=data['id'],
+                jenis_akun='pegawai'
+            )
+    return render(request, template_name, context= {'data2':data2, 'user':user, 'json_str':json_str})
 
 def LogoutView(request):
     try:
@@ -128,7 +146,6 @@ def LogoutView(request):
         pass
     return render(request, 'login/login.html')
 
-
 def IndexView(request):
     username = str(request.session.get('username'))
     pegawai = {
@@ -176,7 +193,7 @@ def DetailView(request):
     username = str(request.session.get('username'))
     pegawai = User.objects.get(username=username)
     print(pegawai)
-    datautama =  urllib.request.urlopen(alamat +'nip/?company='+'914')
+    datautama =  urllib.request.urlopen(alamat +'nip/?search='+str(username))
     json_str = json.load(datautama)
     print(json_str)
     for data in json_str:
@@ -201,3 +218,8 @@ def PerOpdView(request):
 
     return render(request, 'pegawai/uploadperopd.html',context={'opd':opd}) 
 
+def RiwayatKgbView(request):
+    return render(request,'pegawai/riwayatkgb.html')
+
+def RiwayatPangkatView(request):
+    return render(request,'pegawai/riwayatpangkat.html')
