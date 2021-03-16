@@ -1,52 +1,53 @@
-{% if user.is_authenticated %}
 <div class="sidebar">
     <nav class="sidebar-nav">
         <ul class="nav">
             <li class="nav-title">Menu</li>
-            <li class="nav-item">
-                <a href="{% url 'index' %}" class="nav-link">
-                 <i class="icon icon-speedometer"></i> Dashboard
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{% url 'riwayatkgb' %}" class="nav-link">
-                    <i class="icon icon-info"></i> Riwayat KGB
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{% url 'riwayatpangkat' %}" class="nav-link">
-                    <i class="icon icon-graph"></i> Riwayat Pangkat
-                </a>
-            </li>
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a href="{% url 'index' %}" class="nav-link">
+                     <i class="icon icon-screen-desktop"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'riwayatkgb' %}" class="nav-link">
+                        <i class="icon icon-chart"></i> Riwayat KGB
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'riwayatpangkat' %}" class="nav-link">
+                        <i class="icon icon-graph"></i> Riwayat Pangkat
+                    </a>
+                </li>
             {% endif %}
+
             {%if user.is_authenticated and user.is_staff %}
-            <li class="nav-item">
-                <a href="{% url 'detail' %}" class="nav-link">
-                 <i class="icon icon-user-following"></i> Pegawai
-                </a>
-            </li>
-            
-            <li class="nav-item nav-dropdown">
-                <a href="#" class="nav-link nav-dropdown-toggle">
-                    <i class="icon icon-people"></i> Nominatif <i class="fa fa-caret-left"></i>
-                </a>
-              
-                <ul class="nav-dropdown-items">
-                    detail                        <a href="<?php echo site_url('daftar-nominatif" class="nav-link">
-                            <i class="icon icon-user-following"></i> Daftar Nominatif
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="<?php echo site_url('nominatif-manual" class="nav-link">
-                            <i class="icon icon-user-follow"></i> Nominatif Manual
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        detail<i class="icon icon-user-unfollow"></i> Nominatif Tertunda
-                        </a>
-                    </li>
-                </ul>
-            </li>
+                <li class="nav-item">
+                    <a href="{% url 'riwayatpangkat' %}" class="nav-link">
+                        <i class="icon icon-people"></i> Data Pegawai
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'riwayatpangkat' %}" class="nav-link">
+                        <i class="icon icon-user-following"></i> Daftar Nominatif
+                    </a>
+                </li>
+                <li class="nav-item nav-dropdown">
+                    <a href="#" class="nav-link nav-dropdown-toggle">
+                        <i class="icon icon-refresh"></i> Proses Berkala <i class="fa fa-caret-left"></i>
+                    </a>
+                    <ul class="nav-dropdown-items">
+                        <li class="nav-item">
+                            <a href="<?php echo site_url('konfigurasi-sk'); ?>" class="nav-link">
+                                <i class="icon icon-share-alt"></i> Usulan Berkala
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'riwayatpangkat' %}" class="nav-link">
+                        <i class="icon icon-info"></i> Status KGB
+                    </a>
+                </li>
             {% endif %}
             {%if user.is_authenticated and user.is_superuser %}
             <li class="nav-item">
