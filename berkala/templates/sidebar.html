@@ -9,18 +9,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="<?php echo site_url('riwayat-kgb" class="nav-link">
+                <a href="{% url 'riwayatkgb' %}" class="nav-link">
                     <i class="icon icon-info"></i> Riwayat KGB
                 </a>
             </li>
             <li class="nav-item">
-                <a href="<?php echo site_url('riwayat-proses" class="nav-link">
-                    <i class="icon icon-graph"></i> Riwayat Proses KGB
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="<?php echo site_url('riwayat-proses/pegawai/' .$this->session->userdata('nip')); ?>" class="nav-link">
-                    <i class="icon icon-graph"></i> Riwayat Proses KGB
+                <a href="{% url 'riwayatpangkat' %}" class="nav-link">
+                    <i class="icon icon-graph"></i> Riwayat Pangkat
                 </a>
             </li>
             {% endif %}
@@ -47,7 +42,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        detail                            <i class="icon icon-user-unfollow"></i> Nominatif Tertunda
+                        detail<i class="icon icon-user-unfollow"></i> Nominatif Tertunda
                         </a>
                     </li>
                 </ul>
