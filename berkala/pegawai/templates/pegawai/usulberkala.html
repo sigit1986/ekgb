@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="col-md-12">
+    <div class="card-header bg-light">
+        Daftar Nominatif KGB
+    </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="myTable" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>NIP</th>
+                        <th>Nama</th>
+                        <th>Pangkat Terakhir</th>
+                        <th>Berkala Terakhir</th>
+                        <th>Gaji</th>
+                        <th>Aksi</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>198612172011011003</td>
+                            <td>Sigit Eka Karsa</td>
+                            <td>III/c</td>
+                            <td>01-01-2019</td>
+                            <td>Rp. 4.500.000,- </td>
+                            <td>
+                                <a href="<?php echo site_url('riwayat-kgb/pegawai/' .$row->asn_nip); ?>" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Detail"><i class="fas fa-eye"></i></a>
+                                &nbsp;
+                                <input type="checkbox" name="maskukkan ke usulan" value="Y"> Usulkan
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="col-md-12">
+                    <hr>
+                </div>
+                <div class="col-md-12 row align-items-center justify-content-center">
+                    <button type="submit" name="submit" value="tambah_nominatif" class="btn btn-primary">
+                        <i class="fa fa-plus-square"></i> &nbsp; Tambah Nominatif
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

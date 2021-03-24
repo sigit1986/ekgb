@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="col-md-12">
+    <div class="card-header bg-light">
+        Daftar Data Pegawai
+        <hr>
+        OPD : Badan Kepegawaian Daerah
+    </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="myTable" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>NIP</th>
+                        <th>Nama</th>
+                        <th>Jenis Jabatan</th>
+                        <th>jabatan Terkahir</th>
+                        <th>Pangkat/Golongan Terkahir</th>
+                        <th>OPD</th>
+                        <th>Aksi</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>198612172011011003</td>
+                            <td>Sigit Eka Karsa</td>
+                            <td>JFT</td>
+                            <td>Pranata Komputer Pertama</td>
+                            <td>III/c</td>
+                            <td>BKD</td>
+                            <td>
+                                <a href="<?php echo site_url('riwayat-kgb/pegawai/' .$row->asn_nip); ?>" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Detail"><i class="fas fa-eye"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
